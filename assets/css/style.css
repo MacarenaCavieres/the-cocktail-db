@@ -6,8 +6,36 @@
 }
 
 body {
-    background-color: #3e588f;
-    color: #fbf9f1;
+    background-color: #153448;
+    color: #ca8787;
+}
+
+header {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#letters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.letter {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-right: 0.8rem;
+}
+
+.letter:hover {
+    color: #ffffff;
+    cursor: pointer;
 }
 
 h1 {
@@ -21,6 +49,33 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+.sectDin {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.artDin {
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    margin: 1rem;
+    background-color: #ca8787;
+    transition: transform 0.3s ease;
+}
+
+.subDin {
+    padding: 10px;
+}
+
+.nameDin {
+    font-size: 1.5rem;
+    color: #ffd0d0;
 }
 
 .randomContainer {
@@ -44,6 +99,7 @@ h1 {
 
 .group {
     text-align: center;
+    margin-top: 4rem;
 }
 
 .group p {
@@ -51,16 +107,16 @@ h1 {
 }
 
 button {
-    border: solid 0.5px rgb(161, 155, 155);
+    border: solid 0.5px #dbaaaad2;
     border-radius: 5px;
     padding: 0.5rem;
-    background-color: #fbf9f1;
+    background-color: #dbaaaad2;
     cursor: pointer;
-    /* transition: transform 0.3s ease; */
+    color: rgb(75, 65, 65);
 }
 
 button:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.274);
 }
 
 #btnRandom {
@@ -70,12 +126,11 @@ button:hover {
 }
 
 .articleRandom {
-    width: 50%;
+    width: 500px;
     height: auto;
-    border: groove 1px #fbf9f1;
     border-radius: 10px;
     margin-bottom: 3rem;
-    background-color: #203562;
+    background-color: #ffeae3;
     transition: transform 0.3s ease;
 }
 
@@ -84,7 +139,8 @@ button:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.37);
 }
 
-.articleRandom img {
+.articleRandom img,
+.artDin img {
     width: 100%;
     height: auto;
     border-top-left-radius: 10px;
@@ -100,7 +156,8 @@ button:hover {
     font-size: 2rem;
 }
 
-.btnPrep {
+.btnPrep,
+.btnPrepDin {
     margin-bottom: 1rem;
 }
 

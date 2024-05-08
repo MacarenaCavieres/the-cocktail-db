@@ -11,6 +11,32 @@ const ingrRandom = document.querySelector(".ingrRandom");
 const instRandom = document.querySelector(".instRandom");
 const glassRandom = document.querySelector(".glassRandom");
 const catRandom = document.querySelector(".catRandom");
+const letters = document.querySelector("#letters");
+
+for (let i = 97; i <= 122; i++) {
+    const letter = String.fromCharCode(i);
+    const anchor = document.createElement("a");
+
+    anchor.textContent = letter;
+    anchor.classList.add("letter");
+    anchor.target = "_blank";
+
+    anchor.addEventListener("click", () => {
+        filterLetter(letter);
+    });
+
+    letters.appendChild(anchor);
+}
+
+const filterLetter = async (letter) => {
+    try {
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
+        const data = await response.json();
+        console.log(data.drinks);
+    } catch (error) {
+        console.error("Error ===> ", error);
+    }
+};
 
 const connectApi = async () => {
     try {
@@ -18,16 +44,10 @@ const connectApi = async () => {
         const data = await response.json();
 
         pintarCocktail(data);
-        // check(data);
     } catch (error) {
         console.error("Error ====> ", error);
     }
 };
-
-// const check = (data) => {
-//     const princ = data.drinks[0];
-//     Object.values(princ).forEach((item) => console.log(item));
-// };
 
 const pintarCocktail = (data) => {
     const princ = data.drinks[0];
@@ -43,7 +63,7 @@ const pintarCocktail = (data) => {
         const ingredient = princ["strIngredient" + i];
 
         if (measure || ingredient) {
-            ingrRandom.textContent += ` ${measure || ""} ${ingredient || ""} - `;
+            ingrRandom.textContent += ` - ${measure || ""} ${ingredient || ""}  `;
         }
     }
 };
