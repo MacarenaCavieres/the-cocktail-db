@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cocktail DB</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+    <body>
+        <h1>The best Cocktails</h1>
+
+        <section class="container">
+            <div class="randomContainer">
+                <div class="group">
+                    <p>Click the button to get a random cocktail</p>
+                    <button type="button" id="btnRandom">click</button>
+                </div>
+
+                <article class="articleRandom">
+                    <div class="group namePreran">
+                        <img src="" alt="" class="imageRandom" />
+                        <h2 class="nameRandom"></h2>
+                        <button type="button" class="btnPrep">Preparation</button>
+                    </div>
+                </article>
+                <div class="modal">
+                    <div class="modalContainer">
+                        <button type="button" class="closeModal">X</button>
+                        <p class="ingrRandom">Ingredients:</p>
+                        <p class="instRandom">Instructions:</p>
+                        <p class="glassRandom">Glass:</p>
+                        <p class="catRandom">Category:</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main></main>
+        <template id="template"> </template>
+
+        <script src="./assets/js/app.js"></script>
+    </body>
+</html>
