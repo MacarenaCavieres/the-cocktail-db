@@ -11,7 +11,15 @@ const ingrRandom = document.querySelector(".ingrRandom");
 const instRandom = document.querySelector(".instRandom");
 const glassRandom = document.querySelector(".glassRandom");
 const catRandom = document.querySelector(".catRandom");
+const namRandom = document.querySelector(".namRandom");
 const letters = document.querySelector("#letters");
+const namDin = document.querySelector(".namDin");
+const ingrDin = document.querySelector(".ingrDin");
+const instDin = document.querySelector(".instDin");
+const glassDin = document.querySelector(".glassDin");
+const catDin = document.querySelector(".catDin");
+const closeModalDin = document.querySelector(".closeModalDin");
+const modalDin = document.querySelector(".modalDin");
 
 for (let i = 97; i <= 122; i++) {
     const letter = String.fromCharCode(i);
@@ -19,7 +27,6 @@ for (let i = 97; i <= 122; i++) {
 
     anchor.textContent = letter;
     anchor.classList.add("letter");
-    anchor.target = "_blank";
 
     anchor.addEventListener("click", () => {
         filterLetter(letter);
@@ -32,13 +39,16 @@ const filterLetter = async (letter) => {
     try {
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
         const data = await response.json();
-        artDin(data);
+        artDinam(data);
     } catch (error) {
         console.error("Error ===> ", error);
     }
 };
 
-const artDin = (data) => {
+const artDinam = (data) => {
+    const searchResult = document.querySelector(".searchResult");
+    searchResult.style.visibility = "visible";
+
     sectDin.textContent = "";
     const result = data.drinks;
 
@@ -47,6 +57,12 @@ const artDin = (data) => {
         clone.querySelector(".imgDin").src = item.strDrinkThumb;
         clone.querySelector(".imgDin").alt = item.strDrink;
         clone.querySelector(".nameDin").textContent = item.strDrink;
+        clone.querySelector(".btnPrepDin").textContent = "Preparation";
+        clone.querySelector(".btnPrepDin").addEventListener("click", (e) => {
+            modalDin.classList.add("openModalDin");
+
+            modalPrep(item);
+        });
 
         fragment.appendChild(clone);
     });
@@ -54,11 +70,34 @@ const artDin = (data) => {
     sectDin.appendChild(fragment);
 };
 
+const modalPrep = (target) => {
+    namDin.textContent = "";
+    instDin.textContent = "";
+    glassDin.textContent = "";
+    catDin.textContent = "";
+
+    closeModalDin.addEventListener("click", () => {
+        modalDin.classList.remove("openModalDin");
+    });
+    namDin.textContent = target.strDrink;
+    instDin.textContent += "Instructions: " + target.strInstructions;
+    glassDin.textContent += "Glass: " + target.strGlass;
+    catDin.textContent += "Category: " + target.strCategory;
+
+    for (let i = 1; i <= 15; i++) {
+        const measure = target["strMeasure" + i];
+        const ingredient = target["strIngredient" + i];
+
+        if (measure || ingredient) {
+            ingrDin.textContent += ` - ${measure || ""} ${ingredient || ""}  `;
+        }
+    }
+};
+
 const connectApi = async () => {
     try {
         const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
         const data = await response.json();
-
         pintarCocktail(data);
     } catch (error) {
         console.error("Error ====> ", error);
@@ -73,6 +112,7 @@ const pintarCocktail = (data) => {
     instRandom.textContent += " " + princ.strInstructions;
     glassRandom.textContent += " " + princ.strGlass;
     catRandom.textContent += " " + princ.strCategory;
+    namRandom.textContent = princ.strDrink;
 
     for (let i = 1; i <= 15; i++) {
         const measure = princ["strMeasure" + i];

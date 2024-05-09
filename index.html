@@ -23,6 +23,16 @@
         <h2 class="searchResult">Result by Letter</h2>
         <main class="container">
             <section class="sectDin" id="sectDin"></section>
+            <div class="modalDin">
+                <div class="modalContainerDin">
+                    <button type="button" class="closeModalDin">X</button>
+                    <h4 class="namDin"></h4>
+                    <p class="ingrDin">Ingredients:</p>
+                    <p class="instDin">Instructions:</p>
+                    <p class="glassDin">Glass:</p>
+                    <p class="catDin">Category:</p>
+                </div>
+            </div>
         </main>
         <template id="template">
             <article class="artDin">
@@ -33,7 +43,7 @@
                         class="imgDin"
                     />
                     <h2 class="nameDin">B-52</h2>
-                    <button type="button" class="btnPrepDin">Preparation</button>
+                    <button type="button" class="btnPrepDin"></button>
                 </div>
             </article>
         </template>
@@ -54,6 +64,7 @@
                 <div class="modal">
                     <div class="modalContainer">
                         <button type="button" class="closeModal">X</button>
+                        <h4 class="namRandom"></h4>
                         <p class="ingrRandom">Ingredients:</p>
                         <p class="instRandom">Instructions:</p>
                         <p class="glassRandom">Glass:</p>

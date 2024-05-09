@@ -120,9 +120,9 @@ h1 {
     text-align: center;
 }
 
-/* .second {
-    margin-top: 4rem;
-} */
+.second {
+    margin-top: 2rem;
+}
 
 button {
     border: solid 0.5px #dbaaaad2;
@@ -176,12 +176,17 @@ button:hover {
     font-size: 2rem;
 }
 
+h4 {
+    color: black;
+}
+
 .btnPrep,
 .btnPrepDin {
     margin-bottom: 1rem;
 }
 
-.modal {
+.modal,
+.modalDin {
     position: fixed;
     top: 0;
     left: 0;
@@ -195,12 +200,14 @@ button:hover {
     text-shadow: none;
 }
 
-.openModal {
+.openModal,
+.openModalDin {
     visibility: visible;
     z-index: 10;
 }
 
-.modalContainer {
+.modalContainer,
+.modalContainerDin {
     background-color: #fff2f2;
     width: 90vw;
     height: 50vh;
@@ -213,7 +220,8 @@ button:hover {
     padding: 3rem;
 }
 
-.closeModal {
+.closeModal,
+.closeModalDin {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -223,7 +231,8 @@ button:hover {
     cursor: pointer;
 }
 
-.closeModal:hover {
+.closeModal:hover,
+.closeModalDin:hover {
     box-shadow: none;
     transform: scale(1.3);
 }
