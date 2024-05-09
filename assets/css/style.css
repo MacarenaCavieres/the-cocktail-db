@@ -8,18 +8,27 @@
 body {
     background-color: #153448;
     color: #ca8787;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px #00000080;
+}
+
+nav {
+    display: flex;
+    justify-content: end;
+}
+
+nav i {
+    margin-right: 4rem;
+
+    margin-top: 0.5rem;
 }
 
 header {
     margin-top: 2rem;
     text-align: center;
     align-items: center;
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 h2 {
@@ -34,6 +43,8 @@ h2 {
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+    border-bottom: solid 8px #ca8787;
+    border-radius: 5px;
 }
 
 .letter {
@@ -41,6 +52,7 @@ h2 {
     text-decoration: none;
     font-size: 1.5rem;
     margin-right: 0.8rem;
+    margin-bottom: 0.8rem;
 }
 
 .letter:hover {
@@ -48,9 +60,55 @@ h2 {
     cursor: pointer;
 }
 
+.divForm {
+    width: 70%;
+}
+
+form {
+    margin-top: 1rem;
+}
+
+.searchGroup {
+    flex-direction: column;
+}
+
+.inputGroup {
+    display: flex;
+    margin-right: 5px;
+}
+
+.inputIcon {
+    position: relative;
+    width: 100%;
+}
+
+.icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: none;
+}
+
+label {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.searchName {
+    height: 35px;
+    width: 98%;
+    border: none;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-block: 5px;
+    margin-right: 5px;
+}
+
 h1 {
     text-align: center;
-    margin-block: 3rem;
+    margin-top: 3rem;
     font-size: 4rem;
     text-decoration: underline;
 }
@@ -60,15 +118,16 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .searchResult {
-    visibility: hidden;
+    margin-top: 3rem;
+    display: none;
 }
 
 .sectDin {
     display: flex;
-    height: auto;
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
@@ -134,7 +193,7 @@ button {
 }
 
 button:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.274);
+    box-shadow: 0 5px 15px #00000046;
 }
 
 #btnRandom {
@@ -156,7 +215,7 @@ button:hover {
 
 .articleRandom:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.37);
+    box-shadow: 0 10px 20px #0000005e;
 }
 
 .articleRandom img,
@@ -196,7 +255,7 @@ h4 {
     place-items: center;
     visibility: hidden;
     z-index: -10;
-    color: black;
+    color: #000000;
     text-shadow: none;
 }
 
@@ -215,9 +274,10 @@ h4 {
     display: grid;
     place-items: center;
     position: relative;
-    border: double 10px black;
+    border: double 10px #000000;
     border-radius: 5px;
     padding: 3rem;
+    overflow: auto;
 }
 
 .closeModal,
@@ -237,12 +297,31 @@ h4 {
     transform: scale(1.3);
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ca8787;
+    color: #fff2f2;
+    height: 100px;
+}
+
 @media (max-width: 768px) {
     .articleRandom {
         width: 100%;
         height: auto;
     }
-    .modalContainer {
+    .modalContainer,
+    .modalContainerDin {
         height: 90vh;
+    }
+    .modalContainerDin {
+        padding: 3.5rem 1rem;
+    }
+    .artDin {
+        width: 100%;
+    }
+    nav i {
+        margin-right: 0.5rem;
     }
 }

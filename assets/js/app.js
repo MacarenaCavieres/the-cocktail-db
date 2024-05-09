@@ -20,6 +20,7 @@ const glassDin = document.querySelector(".glassDin");
 const catDin = document.querySelector(".catDin");
 const closeModalDin = document.querySelector(".closeModalDin");
 const modalDin = document.querySelector(".modalDin");
+const form = document.querySelector("#form");
 
 for (let i = 97; i <= 122; i++) {
     const letter = String.fromCharCode(i);
@@ -47,7 +48,7 @@ const filterLetter = async (letter) => {
 
 const artDinam = (data) => {
     const searchResult = document.querySelector(".searchResult");
-    searchResult.style.visibility = "visible";
+    searchResult.style.display = "block";
 
     sectDin.textContent = "";
     const result = data.drinks;
@@ -58,7 +59,7 @@ const artDinam = (data) => {
         clone.querySelector(".imgDin").alt = item.strDrink;
         clone.querySelector(".nameDin").textContent = item.strDrink;
         clone.querySelector(".btnPrepDin").textContent = "Preparation";
-        clone.querySelector(".btnPrepDin").addEventListener("click", (e) => {
+        clone.querySelector(".btnPrepDin").addEventListener("click", () => {
             modalDin.classList.add("openModalDin");
 
             modalPrep(item);
@@ -93,6 +94,11 @@ const modalPrep = (target) => {
         }
     }
 };
+
+form.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("click");
+});
 
 const connectApi = async () => {
     try {
