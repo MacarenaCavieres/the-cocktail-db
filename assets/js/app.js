@@ -1,7 +1,7 @@
 const btnRandom = document.querySelector("#btnRandom");
-// const tailRandom = document.querySelector("#tailRandom");
-// const template = document.querySelector("#template").content;
-// const fragment = document.createDocumentFragment();
+const sectDin = document.querySelector("#sectDin");
+const template = document.querySelector("#template").content;
+const fragment = document.createDocumentFragment();
 const btnPrep = document.querySelector(".btnPrep");
 const modal = document.querySelector(".modal");
 const closeModal = document.querySelector(".closeModal");
@@ -32,10 +32,26 @@ const filterLetter = async (letter) => {
     try {
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
         const data = await response.json();
-        console.log(data.drinks);
+        artDin(data);
     } catch (error) {
         console.error("Error ===> ", error);
     }
+};
+
+const artDin = (data) => {
+    sectDin.textContent = "";
+    const result = data.drinks;
+
+    result.forEach((item) => {
+        const clone = template.cloneNode(true);
+        clone.querySelector(".imgDin").src = item.strDrinkThumb;
+        clone.querySelector(".imgDin").alt = item.strDrink;
+        clone.querySelector(".nameDin").textContent = item.strDrink;
+
+        fragment.appendChild(clone);
+    });
+
+    sectDin.appendChild(fragment);
 };
 
 const connectApi = async () => {
@@ -83,21 +99,3 @@ btnPrep.addEventListener("click", () => {
 closeModal.addEventListener("click", () => {
     modal.classList.remove("openModal");
 });
-
-// const pintarCocktail = (data) => {
-//     console.log(data.drinks[0]);
-
-//     const clone = template.cloneNode(true);
-//     clone.querySelector(".imageRandom").src = data.drinks[0].strDrinkThumb;
-//     clone.querySelector(".imageRandom").alt = data.drinks[0].strDrink;
-//     clone.querySelector(".nameRandom").textContent = data.drinks[0].strDrink;
-//     clone.querySelector(".instRandom").textContent = data.drinks[0].strInstructions;
-//     clone.querySelector(
-//         ".ingrRandom"
-//     ).textContent = `${data.drinks[0].strMeasure1} ${data.drinks[0].strIngredient1} - ${data.drinks[0].strMeasure2} ${data.drinks[0].strIngredient2} - ${data.drinks[0].strMeasure3} ${data.drinks[0].strIngredient3} - ${data.drinks[0].strMeasure4} ${data.drinks[0].strIngredient4} - ${data.drinks[0].strMeasure5} ${data.drinks[0].strIngredient5} - ${data.drinks[0].strIngredient6}`;
-//     clone.querySelector(".glassRandom").textContent = data.drinks[0].strGlass;
-//     clone.querySelector(".catRandom").textContent = data.drinks[0].strCategory;
-
-//     fragment.appendChild(clone);
-//     tailRandom.appendChild(fragment);
-// };

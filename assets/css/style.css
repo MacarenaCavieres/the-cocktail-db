@@ -8,6 +8,7 @@
 body {
     background-color: #153448;
     color: #ca8787;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 header {
@@ -61,6 +62,10 @@ h1 {
     flex-wrap: wrap;
 }
 
+.searchResult {
+    visibility: hidden;
+}
+
 .sectDin {
     display: flex;
     height: auto;
@@ -70,12 +75,13 @@ h1 {
 }
 
 .artDin {
-    width: 300px;
-    height: 400px;
+    width: 370px;
+    height: auto;
     border-radius: 10px;
     margin: 1rem;
     background-color: #ca8787;
     transition: transform 0.3s ease;
+    text-shadow: none;
 }
 
 .subDin {
@@ -114,9 +120,9 @@ h1 {
     text-align: center;
 }
 
-.second {
+/* .second {
     margin-top: 4rem;
-}
+} */
 
 button {
     border: solid 0.5px #dbaaaad2;
@@ -132,7 +138,8 @@ button:hover {
 }
 
 #btnRandom {
-    width: 60px;
+    width: 120px;
+    height: 40px;
     margin-top: 1rem;
     margin-bottom: 3rem;
 }
@@ -144,6 +151,7 @@ button:hover {
     margin-bottom: 3rem;
     background-color: #ffeae3;
     transition: transform 0.3s ease;
+    text-shadow: none;
 }
 
 .articleRandom:hover {
@@ -184,6 +192,7 @@ button:hover {
     visibility: hidden;
     z-index: -10;
     color: black;
+    text-shadow: none;
 }
 
 .openModal {
