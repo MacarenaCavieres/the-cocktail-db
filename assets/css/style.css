@@ -75,6 +75,7 @@ form {
 .inputGroup {
     display: flex;
     margin-right: 5px;
+    position: relative;
 }
 
 .inputIcon {
@@ -101,9 +102,31 @@ label {
     width: 98%;
     border: none;
     border-radius: 5px;
-    padding-left: 30px;
-    padding-block: 5px;
+    padding: 5px 5px 5px 30px;
     margin-right: 5px;
+}
+
+.list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 90%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 10;
+    display: none;
+    text-shadow: none;
+}
+
+.list li:hover {
+    background-color: #f0f0f0;
+}
+
+.alert {
+    margin-top: 10px;
+    color: #ffeae3;
 }
 
 h1 {
