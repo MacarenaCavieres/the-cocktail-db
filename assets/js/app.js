@@ -24,6 +24,7 @@ const form = document.querySelector("#form");
 const showContainer = document.querySelector("#showContainer");
 const list = document.querySelector(".list");
 const searchName = document.querySelector("#searchName");
+const alert = document.querySelector(".alert");
 
 for (let i = 97; i <= 122; i++) {
     const letter = String.fromCharCode(i);
@@ -98,45 +99,44 @@ const modalPrep = (target) => {
     }
 };
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    // const inputName = searchName.value.trim().toLowerCase();
-    // const alert = document.querySelector(".alert");
-    // const regex = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
-
-    // if (!inputName || !regex.test(inputName)) {
-    //     return (alert.textContent = "Debe ingresar un nombre");
-    // } else {
-    //     alert.textContent = "";
-    // }
-});
-
-searchName.addEventListener("input", () => {
-    const inputName = searchName.value.trim().toLowerCase();
-    // const alert = document.querySelector(".alert");
-    const regex = /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/;
-
-    // if (!inputName || !regex.test(inputName)) {
-    //     return (alert.textContent = "Debe ingresar un nombre");
-    // } else {
-    //     alert.textContent = "";
-    // }
-    findOne(inputName);
-});
-
 const findOne = async (inputName) => {
     try {
-        console.log(inputName);
         const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputName}`);
         const data = await response.json();
+
+        if (!data.drinks) {
+            return (alert.textContent = "Cocktail not found");
+        }
+
         autocom(data);
+        artDinam(data);
     } catch (error) {
         console.error("Error ===> ", error);
     }
 };
 
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    inputName.value = "";
+    const inputName = searchName.value.trim().toLowerCase();
+
+    findOne(inputName);
+});
+list.style.display = "none";
+
+searchName.addEventListener("input", () => {
+    const inputName = searchName.value.trim().toLowerCase();
+    findOne(inputName);
+    list.style.display = "none";
+});
+
+document.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("searchName")) {
+        list.style.display = "none";
+    }
+});
+
 const autocom = (data) => {
-    console.log(data);
     list.textContent = "";
     if (data.drinks) {
         list.style.display = "block";
