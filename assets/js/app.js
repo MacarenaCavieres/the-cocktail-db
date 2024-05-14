@@ -51,9 +51,6 @@ const filterLetter = async (letter) => {
 };
 
 const artDinam = (data) => {
-    const searchResult = document.querySelector(".searchResult");
-    searchResult.style.display = "block";
-
     sectDin.textContent = "";
     const result = data.drinks;
 
@@ -106,6 +103,8 @@ const findOne = async (inputName) => {
 
         if (!data.drinks) {
             return (alert.textContent = "Cocktail not found");
+        } else {
+            alert.textContent = "";
         }
 
         autocom(data);
@@ -117,17 +116,14 @@ const findOne = async (inputName) => {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    inputName.value = "";
     const inputName = searchName.value.trim().toLowerCase();
-
     findOne(inputName);
+    searchName.value = "";
 });
-list.style.display = "none";
 
 searchName.addEventListener("input", () => {
     const inputName = searchName.value.trim().toLowerCase();
     findOne(inputName);
-    list.style.display = "none";
 });
 
 document.addEventListener("click", (e) => {
@@ -138,7 +134,9 @@ document.addEventListener("click", (e) => {
 
 const autocom = (data) => {
     list.textContent = "";
-    if (data.drinks) {
+    if (searchName.value.trim() === "") {
+        list.style.display = "none";
+    } else {
         list.style.display = "block";
         data.drinks.forEach((item) => {
             const listItem = document.createElement("li");
@@ -149,8 +147,6 @@ const autocom = (data) => {
             });
             list.appendChild(listItem);
         });
-    } else {
-        list.style.display = "none";
     }
 };
 
